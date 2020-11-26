@@ -81,89 +81,8 @@ namespace VisualCurs
                 }
             }
         }
-
-        private void filterBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            filter = filterBox.SelectedIndex;
-            UpdateList();
-        }
-
-
-        //private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    bool f = false;
-
-
-
-        //    try
-        //    {
-
-        //        foreach (var a in FederalDistricts.list)
-        //        {
-        //            if (a.name == listBox1.SelectedItem.ToString())
-        //            {
-        //                f = true;
-        //                nameLab.Text = a.name;
-        //                populationLab.Text = "Население: " + a.population.ToString();
-        //                areaLab.Text = "Площадь: " + a.area.ToString();
-        //                centerLab.Text = "Центр: " + a.center;
-        //            }
-        //        }
-        //        fedDistLab.Visible = false;
-        //        regionLab.Visible = false;
-
-        //        deleteBttn.Visible = true;
-        //        changeBttn.Visible = true;
-        //        if (!f)
-        //        {
-        //            foreach (var a in Regions.list)
-        //            {
-        //                if (a.name == listBox1.SelectedItem.ToString())
-        //                {
-        //                    f = true;
-        //                    nameLab.Text = a.name;
-        //                    populationLab.Text = "Население: " + a.population.ToString();
-        //                    areaLab.Text = "Площадь:" + a.area.ToString();
-        //                    centerLab.Text = "Центр: " + a.center;
-        //                    fedDistLab.Text = "Федеральный округ: " + a.federalDistrict.name;
-        //                    fedDistLab.Visible = true;
-        //                }
-        //            }
-        //        }
-        //        if (!f)
-        //        {
-        //            foreach (var a in Districts.list)
-        //            {
-        //                if (a.name == listBox1.SelectedItem.ToString())
-        //                {
-
-        //                    nameLab.Text = a.name;
-        //                    populationLab.Text = "Население: " + a.population.ToString();
-        //                    areaLab.Text = "Площадь:" + a.area.ToString();
-        //                    centerLab.Text = "Центр: " + a.center;
-        //                    fedDistLab.Text = "Федеральный округ:" + a.federalDistrict.name;
-        //                    regionLab.Text = "Область:" + a.region.name;
-        //                    fedDistLab.Visible = true;
-        //                    regionLab.Visible = true;
-        //                }
-        //            }
-        //        }
-        //        nameLab.Visible = true;
-        //        populationLab.Visible = true;
-        //        areaLab.Visible = true;
-        //        centerLab.Visible = true;
-        //    }
-        //    catch
-        //    {
-
-        //    }
-        //}
-
         private void changeBttn_Click(object sender, EventArgs e)
         {
-            bool f = false;
-
-
             foreach (var a in FederalDistricts.list)
             {
                 if (a.name == treeView1.SelectedNode.Text)
@@ -174,8 +93,6 @@ namespace VisualCurs
                 }
             }
 
-            if (!f)
-            {
                 foreach (var a in Regions.list)
                 {
                     if (a.name == treeView1.SelectedNode.Text)
@@ -185,9 +102,7 @@ namespace VisualCurs
                         return;
                     }
                 }
-            }
-            if (!f)
-            {
+            
                 foreach (var a in Districts.list)
                 {
                     if (a.name == treeView1.SelectedNode.Text)
@@ -198,7 +113,7 @@ namespace VisualCurs
                         return;
                     }
                 }
-            }
+            
 
 
 
@@ -271,6 +186,40 @@ namespace VisualCurs
             catch
             {
 
+            }
+        }
+
+        private void deleteBttn_Click(object sender, EventArgs e)
+        {
+            for(int i = 0; i < FederalDistricts.list.Count; i++)
+            {
+                if (FederalDistricts.list[i].name == treeView1.SelectedNode.Text)
+                {
+                    FederalDistricts.list.Remove(FederalDistricts.list[i]);
+                    UpdateList();
+                    return;
+                }
+            }
+
+            for (int i = 0; i < Regions.list.Count; i++)
+            {
+                if (Regions.list[i].name == treeView1.SelectedNode.Text)
+                {
+                    Regions.list.Remove(Regions.list[i]);
+                    UpdateList();
+                    return;
+                }
+            }
+
+
+            for (int i = 0; i < Districts.list.Count; i++)
+            {
+                if (Districts.list[i].name == treeView1.SelectedNode.Text)
+                {
+                    Districts.list.Remove(Districts.list[i]);
+                    UpdateList();
+                    return;
+                }
             }
         }
     }

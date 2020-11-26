@@ -212,6 +212,30 @@ namespace VisualCurs
 
                 errorProviderName.Dispose();
             }
+            foreach(var a in FederalDistricts.list)
+            {
+                if (a.name.ToLower() == nameBox.Text.ToLower())
+                {
+                    errorProviderName.SetError(nameBox, "Такое имя уже существует");
+                    return false;
+                }
+            }
+            foreach (var a in Regions.list)
+            {
+                if (a.name.ToLower() == nameBox.Text.ToLower())
+                {
+                    errorProviderName.SetError(nameBox, "Такое имя уже существует");
+                    return false;
+                }
+            }
+            foreach (var a in Districts.list)
+            {
+                if (a.name.ToLower() == nameBox.Text.ToLower())
+                {
+                    errorProviderName.SetError(nameBox, "Такое имя уже существует");
+                    return false;
+                }
+            }
             //Валидация центра
             if (!validationString(centerBox.Text))
             {
@@ -256,6 +280,7 @@ namespace VisualCurs
                     errorProviderRegion.Dispose();
                 }
             }
+            
             return true;
         }
         private void createBttn_Click(object sender, EventArgs e)

@@ -31,7 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createMenuBttn = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateBttn = new System.Windows.Forms.Button();
             this.filterBox = new System.Windows.Forms.ComboBox();
             this.nameLab = new System.Windows.Forms.Label();
             this.populationLab = new System.Windows.Forms.Label();
@@ -71,31 +70,18 @@
             this.createMenuBttn.Text = "Создать запись";
             this.createMenuBttn.Click += new System.EventHandler(this.createMenuBttn_Click);
             // 
-            // updateBttn
-            // 
-            this.updateBttn.Location = new System.Drawing.Point(295, 45);
-            this.updateBttn.Name = "updateBttn";
-            this.updateBttn.Size = new System.Drawing.Size(108, 23);
-            this.updateBttn.TabIndex = 2;
-            this.updateBttn.Text = "Обновление";
-            this.updateBttn.UseVisualStyleBackColor = true;
-            this.updateBttn.Click += new System.EventHandler(this.updateBttn_Click);
-            // 
             // filterBox
             // 
             this.filterBox.FormattingEnabled = true;
             this.filterBox.Items.AddRange(new object[] {
-            "Все",
-            "Федеральные округа",
-            "Области",
-            "Районы"});
-            this.filterBox.Location = new System.Drawing.Point(168, 45);
+            "Население",
+            "Площадь"});
+            this.filterBox.Location = new System.Drawing.Point(25, 44);
             this.filterBox.Name = "filterBox";
             this.filterBox.Size = new System.Drawing.Size(121, 24);
             this.filterBox.TabIndex = 3;
             this.filterBox.Tag = "";
-            this.filterBox.Text = "Фильтр";
-            this.filterBox.SelectedIndexChanged += new System.EventHandler(this.filterBox_SelectedIndexChanged);
+            this.filterBox.Text = "Сортировка";
             // 
             // nameLab
             // 
@@ -159,7 +145,6 @@
             this.changeBttn.TabIndex = 12;
             this.changeBttn.Text = "Редактировать";
             this.changeBttn.UseVisualStyleBackColor = true;
-//            this.changeBttn.Click += new System.EventHandler(this.changeBttn_Click);
             // 
             // deleteBttn
             // 
@@ -169,6 +154,7 @@
             this.deleteBttn.TabIndex = 13;
             this.deleteBttn.Text = "Удалить";
             this.deleteBttn.UseVisualStyleBackColor = true;
+            this.deleteBttn.Click += new System.EventHandler(this.deleteBttn_Click);
             // 
             // treeView1
             // 
@@ -193,7 +179,6 @@
             this.Controls.Add(this.populationLab);
             this.Controls.Add(this.nameLab);
             this.Controls.Add(this.filterBox);
-            this.Controls.Add(this.updateBttn);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -210,7 +195,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createMenuBttn;
-        private System.Windows.Forms.Button updateBttn;
         private System.Windows.Forms.ComboBox filterBox;
         private System.Windows.Forms.Label nameLab;
         private System.Windows.Forms.Label populationLab;
