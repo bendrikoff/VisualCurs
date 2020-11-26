@@ -83,10 +83,12 @@ namespace VisualCurs
         }
         private void changeBttn_Click(object sender, EventArgs e)
         {
+            Hide();
             foreach (var a in FederalDistricts.list)
             {
                 if (a.name == treeView1.SelectedNode.Text)
                 {
+
                     CollectionsForm colForm = new CollectionsForm(this, a);
                     colForm.Show();
                     return;
@@ -222,5 +224,7 @@ namespace VisualCurs
                 }
             }
         }
+
+
     }
 }

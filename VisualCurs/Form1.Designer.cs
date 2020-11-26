@@ -145,6 +145,7 @@
             this.changeBttn.TabIndex = 12;
             this.changeBttn.Text = "Редактировать";
             this.changeBttn.UseVisualStyleBackColor = true;
+            this.changeBttn.Click += new System.EventHandler(this.changeBttn_Click);
             // 
             // deleteBttn
             // 
