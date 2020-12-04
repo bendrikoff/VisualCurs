@@ -25,13 +25,14 @@ namespace VisualCurs
             return districts;
         }
 
-        public static void PopSort()
+        public static void SortPops()
         {
-            PopComparer pop = new PopComparer();
-            Districts.list.Sort(new PopComparer());
+            Districts.list.Sort(new PopComparer<District>());
         }
-
-
+        public static void SortArea()
+        {
+            Districts.list.Sort(new AreaComparer<District>());
+        }
     }
     public class District:Region
     {
@@ -51,29 +52,6 @@ namespace VisualCurs
 
         
     }
-    public class AreaComparer : IComparer<District>
-    {
-        public int Compare(District p1, District p2)
-        {
-            if (p1.area > p2.area)
-                return 1;
-            else if (p1.area < p2.area)
-                return -1;
-            else
-                return 0;
-        }
-    }
-    public class PopComparer : IComparer<District>
-    {
-        public int Compare(District p1, District p2)
-        {
-            if (p1.population > p2.population)
-                return -1;
-            else if (p1.population < p2.population)
-                return 1;
-            else
-                return 0;
-        }
-    }
+
 
 }

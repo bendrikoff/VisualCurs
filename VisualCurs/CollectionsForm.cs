@@ -26,15 +26,15 @@ namespace VisualCurs
             regionLabel.Visible = false;
             regionBox.Visible = false;
 
-            
-            if (FederalDistricts.list.Count>0){
+
+            if (FederalDistricts.list.Count > 0)
+            {
                 typeBox.Items.Add("Область");
                 if (Regions.list.Count > 0)
                 {
                     typeBox.Items.Add("Район");
                 }
             }
-
             //создаем список имен фед оругов
             if (FederalDistricts.list.Count > 0)
             {
@@ -67,6 +67,15 @@ namespace VisualCurs
             mode = 1;
             form1 = form;
             InitializeComponent();
+            if (FederalDistricts.list.Count > 0)
+            {
+                typeBox.Items.Add("Область");
+                if (Regions.list.Count > 0)
+                {
+                    typeBox.Items.Add("Район");
+                }
+            }
+
 
             federalDistrict = fedDist;
             
@@ -89,6 +98,16 @@ namespace VisualCurs
             mode = 2;
             form1 = form;
             InitializeComponent();
+
+
+            if (FederalDistricts.list.Count > 0)
+            {
+                typeBox.Items.Add("Область");
+                if (Regions.list.Count > 0)
+                {
+                    typeBox.Items.Add("Район");
+                }
+            }
 
             region = reg;
 
@@ -125,7 +144,14 @@ namespace VisualCurs
             InitializeComponent();
 
             district = dist;
-
+            if (FederalDistricts.list.Count > 0)
+            {
+                typeBox.Items.Add("Область");
+                if (Regions.list.Count > 0)
+                {
+                    typeBox.Items.Add("Район");
+                }
+            }
 
             nameBox.Text = dist.name;
             areaBox.Value = dist.area;
@@ -220,28 +246,32 @@ namespace VisualCurs
 
                 errorProviderName.Dispose();
             }
-            foreach(var a in FederalDistricts.list)
+            //если создаем новый экземпляр, проверяем на существующее имя
+            if (mode == 0)
             {
-                if (a.name.ToLower() == nameBox.Text.ToLower())
+                foreach (var a in FederalDistricts.list)
                 {
-                    errorProviderName.SetError(nameBox, "Такое имя уже существует");
-                    return false;
+                    if (a.name.ToLower() == nameBox.Text.ToLower())
+                    {
+                        errorProviderName.SetError(nameBox, "Такое имя уже существует");
+                        return false;
+                    }
                 }
-            }
-            foreach (var a in Regions.list)
-            {
-                if (a.name.ToLower() == nameBox.Text.ToLower())
+                foreach (var a in Regions.list)
                 {
-                    errorProviderName.SetError(nameBox, "Такое имя уже существует");
-                    return false;
+                    if (a.name.ToLower() == nameBox.Text.ToLower())
+                    {
+                        errorProviderName.SetError(nameBox, "Такое имя уже существует");
+                        return false;
+                    }
                 }
-            }
-            foreach (var a in Districts.list)
-            {
-                if (a.name.ToLower() == nameBox.Text.ToLower())
+                foreach (var a in Districts.list)
                 {
-                    errorProviderName.SetError(nameBox, "Такое имя уже существует");
-                    return false;
+                    if (a.name.ToLower() == nameBox.Text.ToLower())
+                    {
+                        errorProviderName.SetError(nameBox, "Такое имя уже существует");
+                        return false;
+                    }
                 }
             }
             //Валидация центра

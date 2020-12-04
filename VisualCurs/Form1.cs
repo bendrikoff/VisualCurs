@@ -17,15 +17,21 @@ namespace VisualCurs
         public Form1()
         {
             InitializeComponent();
-            FederalDistricts.list.Add(new FederalDistrict("Черноземье", 15, 25, "Курск"));
+            FederalDistricts.list.Add(new FederalDistrict("Черноземье", 15, 25, "Воронеж"));
 
             toolStripStatusLabel1.Text = "Программа готова к работе";
 
 
-            Region reg = new Region(FederalDistricts.list[0], "asd", 1, 2, "da");
+            Region reg = new Region(FederalDistricts.list[0], "Курская область", 1, 2, "Курск");
             Regions.list.Add(reg);
+            Districts.list.Add(new District(reg, FederalDistricts.list[0], "Пристенский район", 1001, 100, "Пристень"));
+            Districts.list.Add(new District(reg, FederalDistricts.list[0], "Глушковский район", 850, 101, "Глушково"));
+            
 
-            Districts.list.Add(new District(reg, FederalDistricts.list[0], "Глушково", 100, 100, "Кек"));
+            reg = new Region(FederalDistricts.list[0], "Белгородская область", 1, 2, "Белгород");
+            Regions.list.Add(reg);
+            Districts.list.Add(new District(reg, FederalDistricts.list[0], "Старооскольский район", 1693, 259627, "Пристень"));
+
             UpdateList();
 
 
@@ -343,7 +349,23 @@ namespace VisualCurs
             UpdateList();
         }
 
-
+        private void filterBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(filterBox.SelectedIndex){
+                case 1:
+                    FederalDistricts.SortPops();
+                    Regions.SortPops();
+                    Districts.SortPops();
+                    break;
+                case 2:
+                    FederalDistricts.SortArea();
+                    Regions.SortArea();
+                    Districts.SortArea();
+                    break;
+            }
+            UpdateList();
+            filterBox.SelectedIndex = 0;
+        }
     }
 
 }

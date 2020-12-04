@@ -54,12 +54,6 @@
     </Compile>
     <Compile Include="Districts.cs" />
     <Compile Include="FederalDistricts.cs" />
-    <Compile Include="fedMap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fedMap.Designer.cs">
-      <DependentUpon>fedMap.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,9 +77,6 @@
     </Compile>
     <EmbeddedResource Include="CollectionsForm.resx">
       <DependentUpon>CollectionsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fedMap.resx">
-      <DependentUpon>fedMap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

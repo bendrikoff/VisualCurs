@@ -117,6 +117,7 @@
             // 
             this.filterBox.FormattingEnabled = true;
             this.filterBox.Items.AddRange(new object[] {
+            "Сортировка",
             "Население",
             "Площадь"});
             this.filterBox.Location = new System.Drawing.Point(25, 49);
@@ -125,6 +126,7 @@
             this.filterBox.TabIndex = 3;
             this.filterBox.Tag = "";
             this.filterBox.Text = "Сортировка";
+            this.filterBox.SelectedIndexChanged += new System.EventHandler(this.filterBox_SelectedIndexChanged);
             // 
             // nameLab
             // 
@@ -293,7 +295,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Иерархия";
-     //       this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);

@@ -24,6 +24,14 @@ namespace VisualCurs
             }
             return regions;
         }
+        public static void SortPops()
+        {
+            Regions.list.Sort(new PopComparer<Region>());
+        }
+        public static void SortArea()
+        {
+            Regions.list.Sort(new AreaComparer<Region>());
+        }
     }
     public class Region : FederalDistrict
     {
@@ -37,21 +45,8 @@ namespace VisualCurs
             this.population = population;
             this.center = center;
         }
-        public int CompareTo(Region p)
-        {
-            return this.name.CompareTo(p.name);
-        }
+
     }
-    //class RegionComparer : IComparer<Region>
-    //{
-    //    public int Compare(Region r1, Region r2)
-    //    {
-    //        if (r1.Name.Length > r2.Name.Length)
-    //            return 1;
-    //        else if (r1.Name.Length < r2.Name.Length)
-    //            return -1;
-    //        else
-    //            return 0;
-    //    }
-    //}
+   
+
 }

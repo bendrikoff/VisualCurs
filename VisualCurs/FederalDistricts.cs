@@ -24,6 +24,14 @@ namespace VisualCurs
             }
             return federalDistricts;
         }
+        public static void SortPops()
+        {
+            FederalDistricts.list.Sort(new PopComparer<FederalDistrict>());
+        }
+        public static void SortArea()
+        {
+            FederalDistricts.list.Sort(new AreaComparer<FederalDistrict>());
+        }
     }
     public class FederalDistrict
     {
@@ -40,6 +48,29 @@ namespace VisualCurs
             this.center = center;
         }
     }
+    public class AreaComparer<T> : IComparer<T> where T : FederalDistrict
+    {
+        public int Compare(T p1, T p2)
+        {
+            if (p1.area > p2.area)
+                return -1;
+            else if (p1.area < p2.area)
+                return 1;
+            else
+                return 0;
+        }
+    }
+    public class PopComparer<T> : IComparer<T> where T : FederalDistrict
+    {
+        public int Compare(T p1, T p2)
+        {
+            if (p1.population > p2.population)
+                return -1;
+            else if (p1.population < p2.population)
+                return 1;
+            else
+                return 0;
+        }
+    }
 
-    
 }
