@@ -26,6 +26,14 @@ namespace VisualCurs
             regionLabel.Visible = false;
             regionBox.Visible = false;
 
+            
+            if (FederalDistricts.list.Count>0){
+                typeBox.Items.Add("Область");
+                if (Regions.list.Count > 0)
+                {
+                    typeBox.Items.Add("Район");
+                }
+            }
 
             //создаем список имен фед оругов
             if (FederalDistricts.list.Count > 0)
@@ -285,78 +293,13 @@ namespace VisualCurs
         }
         private void createBttn_Click(object sender, EventArgs e)
         {
-            //bool valid = true;
-            ////Валидация выбора типа
-            //if (typeBox.SelectedIndex == -1)
-            //{
-            //    valid = false;
-            //    errorProviderType.SetError(typeBox, "Укажите тип");
-            //}
-            //else
-            //{
-
-            //    errorProviderType.Dispose();
-            //}
-            ////Валидация имени
-
-            //if (!validationString(nameBox.Text))
-            //{
-            //    valid = false;
-            //    errorProviderName.SetError(nameBox,"Неправильный формат ввода");
-
-            //}
-            //else
-            //{
-
-            //    errorProviderName.Dispose();
-            //}
-            ////Валидация центра
-            //if (!validationString(centerBox.Text))
-            //{
-            //    valid = false;
-            //    errorProviderCenter.SetError(centerBox, "Неправильный формат ввода");
-            //}
-            //else
-            //{
-
-            //    errorProviderCenter.Dispose();
-            //}
-            ////Валидация федерального округа
-            ////Если textbox виден,то производим валидацию
-            //if (fedDistBox.Visible)
-            //{
-            //    if (!validationString(fedDistBox.Text))
-            //    {
-            //        valid = false;
-            //        errorProviderFedDist.SetError(fedDistBox, "Неправильный формат ввода");
-            //    }
-            //    else
-            //    {
-
-            //        errorProviderFedDist.Dispose();
-            //    }
-            //}
-            ////Валидация области
-            ////Если textbox виден,то производим валидацию
-            //if (regionBox.Visible)
-            //{
-            //    if (!validationString(regionBox.Text))
-            //    {
-            //        valid = false;
-            //        errorProviderRegion.SetError(regionBox, "Неправильный формат ввода");
-            //    }
-            //    else
-            //    {
-
-            //        errorProviderRegion.Dispose();
-            //    }
-            //}
+            
             if (Valid())
             {
                 switch (mode)
                 {
                     case 0:
-
+                        
                         switch (typeBox.SelectedIndex)
                         {
                             case 0:
@@ -371,17 +314,19 @@ namespace VisualCurs
                                 Districts.list.Add(new District(Regions.list[regionBox.SelectedIndex], FederalDistricts.list[fedDistBox.SelectedIndex], nameBox.Text, Convert.ToInt32(areaBox.Value), Convert.ToInt32(populationBox.Value), centerBox.Text));
 
                                 break;
-                        }
 
+                        }
+                        form1.CreateNewObject();
 
 
                         break;
                     case 1:
+                        
                         FederalDistricts.list[FederalDistricts.list.IndexOf(federalDistrict)].name = nameBox.Text;
                         FederalDistricts.list[FederalDistricts.list.IndexOf(federalDistrict)].area = Convert.ToInt32(areaBox.Value);
                         FederalDistricts.list[FederalDistricts.list.IndexOf(federalDistrict)].population = Convert.ToInt32(populationBox.Value);
                         FederalDistricts.list[FederalDistricts.list.IndexOf(federalDistrict)].center = centerBox.Text;
-
+                        form1.ChangeObject();
                         break;
                     case 2:
                         Regions.list[Regions.list.IndexOf(region)].name = nameBox.Text;
@@ -389,6 +334,7 @@ namespace VisualCurs
                         Regions.list[Regions.list.IndexOf(region)].population = Convert.ToInt32(populationBox.Value);
                         Regions.list[Regions.list.IndexOf(region)].center = centerBox.Text;
                         Regions.list[Regions.list.IndexOf(region)].federalDistrict = FederalDistricts.list[fedDistBox.SelectedIndex];
+                        form1.ChangeObject();
                         break;
                     case 3:
                         Districts.list[Districts.list.IndexOf(district)].name = nameBox.Text;
@@ -397,12 +343,14 @@ namespace VisualCurs
                         Districts.list[Districts.list.IndexOf(district)].center = centerBox.Text;
                         Districts.list[Districts.list.IndexOf(district)].federalDistrict = FederalDistricts.list[fedDistBox.SelectedIndex];
                         Districts.list[Districts.list.IndexOf(district)].region = Regions.list[regionBox.SelectedIndex];
-
+                        form1.ChangeObject();
 
                         break;
+                    
 
                 }
-                form1.UpdateList();
+               
+                
                 this.Close();
             }
 
@@ -430,6 +378,7 @@ namespace VisualCurs
         {
             this.Close();
         }
+
 
     }
 }

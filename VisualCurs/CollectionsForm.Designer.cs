@@ -65,9 +65,7 @@
             // 
             this.typeBox.FormattingEnabled = true;
             this.typeBox.Items.AddRange(new object[] {
-            "Федеративный округ",
-            "Область",
-            "Район"});
+            "Федеральный округ"});
             this.typeBox.Location = new System.Drawing.Point(67, 87);
             this.typeBox.Name = "typeBox";
             this.typeBox.Size = new System.Drawing.Size(182, 24);
@@ -195,7 +193,6 @@
             this.cancelBttn.TabIndex = 12;
             this.cancelBttn.Text = "Отмена";
             this.cancelBttn.UseVisualStyleBackColor = true;
-//            this.cancelBttn.Click += new System.EventHandler(this.cancelBttn_Click_1);
             // 
             // fedDistLabel
             // 
@@ -302,6 +299,7 @@
             this.Controls.Add(this.typeBox);
             this.Name = "CollectionsForm";
             this.Text = "Collections";
+//            this.Load += new System.EventHandler(this.CollectionsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.populationBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.areaBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).EndInit();

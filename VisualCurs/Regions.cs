@@ -9,6 +9,21 @@ namespace VisualCurs
     public static class Regions
     {
         public static List<Region> list= new List<Region>();
+
+        public static List<Region> Search(string str)
+        {
+            List<Region> regions = new List<Region>();
+
+            foreach (Region region in list)
+            {
+
+                if (region.name.ToLower().Contains(str.ToLower()))
+                {
+                    regions.Add(region);
+                }
+            }
+            return regions;
+        }
     }
     public class Region : FederalDistrict
     {
@@ -22,5 +37,21 @@ namespace VisualCurs
             this.population = population;
             this.center = center;
         }
+        public int CompareTo(Region p)
+        {
+            return this.name.CompareTo(p.name);
+        }
     }
+    //class RegionComparer : IComparer<Region>
+    //{
+    //    public int Compare(Region r1, Region r2)
+    //    {
+    //        if (r1.Name.Length > r2.Name.Length)
+    //            return 1;
+    //        else if (r1.Name.Length < r2.Name.Length)
+    //            return -1;
+    //        else
+    //            return 0;
+    //    }
+    //}
 }

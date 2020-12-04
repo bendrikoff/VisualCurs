@@ -9,6 +9,21 @@ namespace VisualCurs
     public static class FederalDistricts
     {
         public static List<FederalDistrict> list=new List<FederalDistrict>();
+
+        public static List<FederalDistrict> Search(string str)
+        {
+            List<FederalDistrict> federalDistricts = new List<FederalDistrict>();
+
+            foreach (FederalDistrict federalDistrict in list)
+            {
+
+                if (federalDistrict.name.ToLower().Contains(str.ToLower()))
+                {
+                    federalDistricts.Add(federalDistrict);
+                }
+            }
+            return federalDistricts;
+        }
     }
     public class FederalDistrict
     {
